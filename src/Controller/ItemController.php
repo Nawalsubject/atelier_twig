@@ -76,7 +76,6 @@ class ItemController extends AbstractController
         return $this->twig->render('Item/edit.html.twig', ['item' => $item]);
     }
 
-
     /**
      * Display item creation page
      *
@@ -111,5 +110,34 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager();
         $itemManager->delete($id);
         header('Location:/item/index');
+    }
+
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function hello()
+    {
+        $name = 'Nawal';
+        return $this->twig->render('Item/hello.html.twig', ['name' => $name]);
+    }
+
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function person()
+    {
+        $persons = [
+            ['name' => 'riri', 'age' => 10],
+            ['name' => 'fifi', 'age' => 20],
+            ['name' => 'loulou', 'age' => 30],
+        ];
+
+        return $this->twig->render('Item/person.html.twig', ['persons' => $persons]);
     }
 }
